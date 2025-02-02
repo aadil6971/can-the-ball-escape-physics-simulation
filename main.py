@@ -155,11 +155,15 @@ def main(num_arcs, ball_radius, initial_balls, base_multiplier, particle_size,
     # Load sound effects.
     try:
         random_hit_sounds = [
-            pygame.mixer.Sound("./sounds/do.mp3"),
-            pygame.mixer.Sound("./sounds/re.mp3"),
-            pygame.mixer.Sound("./sounds/mi.mp3"),
-            pygame.mixer.Sound("./sounds/fa.mp3"),
-            pygame.mixer.Sound("./sounds/si.mp3")
+            # pygame.mixer.Sound("./sounds/do.mp3"),
+            # pygame.mixer.Sound("./sounds/re.mp3"),
+            # pygame.mixer.Sound("./sounds/mi.mp3"),
+            # pygame.mixer.Sound("./sounds/fa.mp3"),
+            pygame.mixer.Sound("./sounds/si.mp3"),
+            pygame.mixer.Sound("./sounds/metal-hit.mp3"),
+            pygame.mixer.Sound("./sounds/metal-hit2.mp3"),
+            pygame.mixer.Sound("./sounds/metal-hit3.mp3"),
+
         ]
         vanish_sound = pygame.mixer.Sound("./sounds/vanish.mp3")
     except Exception as e:
@@ -254,10 +258,10 @@ def main(num_arcs, ball_radius, initial_balls, base_multiplier, particle_size,
     handler.begin = ball_ball_collision
 
     # --- Create Concentric Arcs ---
-    radius_increment = ball_radius  # Distance between arcs equals ball radius.
+    radius_increment = ball_radius  * 1.2 # Distance between arcs equals ball radius.
     circles = []
     for i in range(num_arcs):
-        radius = base_radius_val + i * radius_increment
+        radius = base_radius_val + i * radius_increment 
         arc_fraction = random.uniform(0.8, 0.9)
         arc_length = 2 * math.pi * arc_fraction
         arc_start = random.uniform(0, 2 * math.pi)
